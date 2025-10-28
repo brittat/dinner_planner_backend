@@ -7,7 +7,7 @@ import pathlib
 from load_ingredients import ingredient_insert_statements
 from data_bootstrap.load_units import unit_insert_statements
 
-def load_data(args, cnx):
+def load_data(cnx):
     cursor = cnx.cursor()
     for statement in ingredient_insert_statements + unit_insert_statements:
         cursor.execute(statement)
@@ -33,7 +33,7 @@ def main(command_line_arguments):
                   host=connection_params['host'],
                   database='recipes')
 
-    load_data(args, cnx)
+    load_data(cnx)
 #    a = read_data(cnx)
 
 if __name__ == "__main__":
