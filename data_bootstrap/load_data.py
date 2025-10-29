@@ -5,13 +5,13 @@ from MySQLdb import connect
 import pathlib
 
 from load_ingredients import ingredient_insert_statements
-from data_bootstrap.load_units import unit_insert_statements
+from load_units import unit_insert_statements
 
 def load_data(cnx):
     cursor = cnx.cursor()
     for statement in ingredient_insert_statements + unit_insert_statements:
         cursor.execute(statement)
-    cnx.commit()    
+    cnx.commit()
     cnx.close()
 
 
@@ -19,7 +19,7 @@ def argparser(command_line_arguments: list[str]) -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog='Load dinner data',
         description='Load data into dinner planning backend')
-    parser.add_argument('-e', '--env', choices=['dev', 'prod'], default='dev') 
+    parser.add_argument('-e', '--env', choices=['dev', 'prod'], default='dev')
     return parser.parse_args(command_line_arguments)
 
 def main(command_line_arguments):
@@ -34,7 +34,6 @@ def main(command_line_arguments):
                   database='recipes')
 
     load_data(cnx)
-#    a = read_data(cnx)
 
 if __name__ == "__main__":
     main(sys.argv[1:])
