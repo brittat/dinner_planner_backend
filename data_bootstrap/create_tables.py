@@ -26,6 +26,7 @@ create_statements = {"ingredient": """CREATE TABLE `ingredient` (
   `ingredient_id`        INT(10) UNSIGNED NOT NULL,
   `unit_id`              INT(10) UNSIGNED NOT NULL,
   `amount`               DECIMAL(4, 2) DEFAULT NULL,
+  `state`                VARCHAR(64) DEFAULT NULL,
   `sort`                 INT(10) UNSIGNED NOT NULL DEFAULT 0,
   PRIMARY KEY (`recipe_ingredient_id`),
   FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient`(`ingredient_id`)
