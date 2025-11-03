@@ -41,17 +41,3 @@ drop table if exists unit;
 drop table if exists ingredient;
 SET FOREIGN_KEY_CHECKS = 1;
 """
-
-cnx = connect(user='korvivar', password='bananarama',
-                              host='localhost',
-                              database='recipes')
-
-cursor = cnx.cursor()
-
-cursor.execute(drop_statements)
-
-
-for create_statement in create_statements.values():
-    cursor.execute(create_statement)
-
-cnx.close()
