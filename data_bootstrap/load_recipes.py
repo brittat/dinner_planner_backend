@@ -171,17 +171,6 @@ def load_recipes():
     cnx.commit()
     cnx.close()
 
-# for each recipe, insert into recipes table
-    # cols: name, description, instructions
-
-    # save recipe id
-
-    # for each ingredient, check existance in ingredients table
-        # -> create if no exist
-    # create recipe_ingredient with saved recipe id from above
-
-    # cols: recipe_id, ingredient_id, unit, id, (varchar state to define for example chopped, sliced etc?)
-
 def get_cnx():
     with open(str(pathlib.Path().resolve())+"/.secrets.json", "r") as f:
         secrets = json.load(f)
@@ -192,11 +181,8 @@ def get_cnx():
                   host=connection_params['host'],
                   database='recipes')
 
-
-
-def main(command_line_arguments):
+def main():
     load_recipes()
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
-
+    main()
