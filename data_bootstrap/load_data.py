@@ -26,7 +26,7 @@ def argparser(command_line_arguments: list[str]) -> argparse.Namespace:
 
 def main(command_line_arguments):
     args = argparser(command_line_arguments=command_line_arguments)
-    with open(str(pathlib.Path().resolve())+"/.secrets.json", "r") as f:
+    with open(str(pathlib.Path(__file__).parents[1])+"/.secrets.json", "r") as f:
         secrets = json.load(f)
         connection_params = secrets.get(args.env)
 
